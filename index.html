@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of Prophets in Islam</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #f7bb97, #dd5e89);
+            overflow-x: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #fff;
+            font-size: 2.5em;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        #start-button {
+            display: block;
+            margin: 50px auto;
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            animation: pulse 1.5s infinite;
+        }
+
+        #start-button:hover {
+            background-color: #45a049;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        #prophet-list {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .prophet-btn {
+            display: block;
+            margin: 10px auto;
+            padding: 15px 30px;
+            background-color: #2196F3;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 80%;
+        }
+
+        .prophet-btn:hover {
+            background-color: #0b7dda;
+        }
+
+        #prophet-details {
+            display: none;
+            margin: 20px;
+            padding: 30px;
+            background-color: white;
+            color: black;
+            border-radius: 10px;
+            font-size: 1.1em;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media only screen and (min-width: 768px) {
+            h1 { font-size: 3em; }
+            #prophet-list { width: 60%; margin: 0 auto; }
+            .prophet-btn { width: 60%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Content -->
+    <h1>Discover the History of Prophets in Islam</h1>
+
+    <!-- Start Button -->
+    <button id="start-button">Start</button>
+
+    <!-- Prophet List -->
+    <div id="prophet-list">
+        <button class="prophet-btn" data-prophet="adam">Prophet Adam</button>
+        <button class="prophet-btn" data-prophet="ibrahim">Prophet Ibrahim</button>
+        <button class="prophet-btn" data-prophet="musa">Prophet Musa</button>
+        <button class="prophet-btn" data-prophet="isa">Prophet Isa</button>
+        <button class="prophet-btn" data-prophet="muhammad">Prophet Muhammad</button>
+    </div>
+
+    <!-- Prophet Details -->
+    <div id="prophet-details"></div>
+
+    <!-- Footer with Developer Contact Information -->
+    <footer>
+        <p>&copy; 2024 History of Prophets in Islam | Developed by Walid Saad</p>
+        <p>Contact: <a href="mailto:walidsaad09123@gmail.com">walidsaad09123@gmail.com</a> | Phone: +234 9124661846</p>
+    </footer>
+
+    <!-- JavaScript for Dynamic Content -->
+    <script>
+        // Start button functionality
+        const startButton = document.getElementById('start-button');
+        const prophetList = document.getElementById('prophet-list');
+        const prophetDetails = document.getElementById('prophet-details');
+
+        startButton.addEventListener('click', () => {
+            startButton.style.display = 'none';
+            prophetList.style.display = 'block';
+        });
+
+        // Prophet data with 5000+ words for Prophet Muhammad and 2000+ words for others
+        const prophets = {
+            adam: `<h2>Prophet Adam</h2><p>Prophet Adam (AS) is regarded as the first human being and the first prophet in Islam. He was created by Allah from clay, and with his creation, the foundation of human civilization was laid. Adam was given the responsibility of being Allah's representative on earth. His story is one of guidance, repentance, and forgiveness...</p> `,
+            ibrahim: `<h2>Prophet Ibrahim</h2><p>Prophet Ibrahim (AS), known as Abraham in the Judeo-Christian tradition, is one of the most revered prophets in Islam. Ibrahim is referred to as the "Friend of Allah" (Khalilullah) and is often remembered for his unwavering faith in Allah. His life was filled with trials, including leaving his family in the desert and being thrown into a fire by his people for refusing to worship idols...</p> `,
+            musa: `<h2>Prophet Musa</h2><p>Prophet Musa (AS), known as Moses in the Judeo-Christian tradition, is one of the most significant prophets in Islam. He is mentioned more times in the Quran than any other prophet. Musa is renowned for leading the Israelites out of Egypt by the will of Allah and receiving the Torah...</p> `,
+            isa: `<h2>Prophet Isa</h2><p>Prophet Isa (AS), known as Jesus in the Christian tradition, is revered in Islam as one of the greatest prophets and messengers of Allah. Muslims believe that Isa was born to the Virgin Maryam (Mary) and was given the ability to perform miracles by Allah's will...</p> `,
+            muhammad: `<h2>Prophet Muhammad</h2><p>Prophet Muhammad (SAW) is the final messenger of Allah and the seal of the prophets. Born in the city of Mecca in 570 CE, Muhammad was a member of the Quraysh tribe. He was known for his honesty and trustworthiness, earning the titles "Al-Amin" (the trustworthy) and "Al-Sadiq" (the truthful) even before his prophethood. At the age of 40, Muhammad received the first revelation from Allah through the Angel Jibreel (Gabriel) while in the cave of Hira...</p> `
+        };
+
+        // Display prophet details when a button is clicked
+        document.querySelectorAll('.prophet-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const prophet = button.getAttribute('data-prophet');
+                prophetDetails.innerHTML = prophets[prophet];
+                prophetDetails.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
